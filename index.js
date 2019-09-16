@@ -29,9 +29,13 @@ app.get('/calculate', function(request, response) {
         response.send('Number of half_litre_mugs per engineer is not valid.')
     } else {
     	var tot_half_litre_mugs = thirsty_associates * half_litre_mugs;
-    	var tot_kegs = eu_litres_per_keg / tot_half_litre_mugs;
+    	var tot_kegs = Math.round(eu_litres_per_keg / tot_half_litre_mugs + 0.5);
+    	const pluralize = (count, noun, suffix = 's') =>
+    	  `${noun}${count !== 1 ? suffix : ''}`;
 
-        var answer = 'For ' + (thirsty_associates).toString() + ' thirsty associates order ' + (tot_kegs).toString() + ' kegs of beer.';
+        var answer = 'For ' + (thirsty_associates).toString() +
+        	' thirsty associates order ' + (tot_kegs).toString() + ' ' +
+        	pluralize(tot_kegs, 'keg') + ' of beer.';
 
         response.send(answer.fontsize(20));
     }
