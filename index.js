@@ -37,7 +37,9 @@ app.get('/calculate', function(request, response) {
         	' thirsty associates order ' + (tot_kegs).toString() + ' ' +
         	pluralize(tot_kegs, 'keg') + ' of beer.';
 
-        response.send(answer.fontsize(20));
+        response.render('answer',{
+            answer: answer
+        });
     }
 })
 
