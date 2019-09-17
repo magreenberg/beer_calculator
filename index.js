@@ -34,7 +34,7 @@ app.get('/calculate', function(request, response) {
     	  `${noun}${count !== 1 ? suffix : ''}`;
 
         var answer = 'For ' + (thirsty_associates).toString() +
-        	' thirsty associates order ' + (tot_kegs).toString() + ' ' +
+        	' thirsty ' + pluralize(thirsty_associates, 'associate') + ' order ' + (tot_kegs).toString() + ' ' +
         	pluralize(tot_kegs, 'keg') + ' of beer.';
 
         response.render('answer',{
